@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Game.h" />
+    <ClInclude Include="headers\TextureManager.h" />
     <ClInclude Include="headers\Textures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -78,7 +78,6 @@ void Game::Draw() {
 
 	SDL_RenderCopy(m_renderer, tex->GetTexture(), &m_srcRect, &m_texRect);
 	
-	//Detach the texture
 	SDL_SetRenderTarget(m_renderer, NULL);
 
 	SDL_RenderClear(m_renderer);
