@@ -6,15 +6,15 @@
 class TextureManager {
 
 public:
-	TextureManager();
+	TextureManager(SDL_Renderer* renderer);
 	~TextureManager();
 
-	void CreateTexture(); // If a new texture ever needs to be added.
-	void RemoveTexture(); // Removes a texture from the list.
-	SDL_Texture GetTexture(); // Gets the texture from the list.
+	void CreateTexture(std::string cat, std::string name); // If a new texture ever needs to be added.
+	void RemoveTexture(std::string id); // Removes a texture from the list.
+	SDL_Texture* GetTexture(std::string id); // Gets the texture from the list.
 
 private:
-	std::vector<Texture>* m_textures; // List containing the textures.
-
+	std::vector<Texture*>* m_textures; // List containing the textures.
+	SDL_Renderer* m_renderer;
 	void LoadTextures(); // Loads all textures from the textures folder.
 };

@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "SDL.h"
 #include <stdio.h>
-
+#include <iostream>
 
 Game::Game() {
 	Start();
@@ -22,9 +22,6 @@ Game::Game() {
 	}
 
 	End();
-	
-	//SDL_Delay(3000);  // Pause execution for 3000 milliseconds, for example
-
 }
 
 Game::~Game() {
@@ -40,9 +37,12 @@ void Game::Start() {
 
 	// Parameters: Title, X position, Y position, width, height, flags.
 	m_window = SDL_CreateWindow("Mario SDLv2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_res.x, m_res.y, SDL_WINDOW_OPENGL);
+	if(!m_window)	std::cout << "Failed to create window: " << SDL_GetError() << std::endl;
 
 	// Parameters: Window, index, flags.
-	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+	if (!(m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE)))	std::cout << "Failed to create renderer: " << SDL_GetError() << std::endl;
+
+	m_texManager = new TextureManager(m_renderer);
 
 	// Parameters: Renderer, pixel format, flags, width, height
 	m_texTarget = SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_TARGET, m_res.x, m_res.y);
@@ -58,7 +58,8 @@ void Game::Start() {
 	m_srcRect.w = 64;
 	m_srcRect.h = 64;
 
-	tex = new Texture("entity", m_renderer);
+	m_texManager->CreateTexture("mobs", "entity");
+	m_texture = m_texManager->GetTexture("entity");
 
 	if (!m_window) { // If window has no value
 		printf("Window failed to be created. Error: ", SDL_GetError());
@@ -76,7 +77,7 @@ void Game::Draw() {
 	
 	SDL_RenderClear(m_renderer);
 
-	SDL_RenderCopy(m_renderer, tex->GetTexture(), &m_srcRect, &m_texRect);
+	SDL_RenderCopy(m_renderer, m_texture, &m_srcRect, &m_texRect);
 	
 	SDL_SetRenderTarget(m_renderer, NULL);
 

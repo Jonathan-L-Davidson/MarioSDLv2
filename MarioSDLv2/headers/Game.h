@@ -1,5 +1,5 @@
 #include "SDL.h"
-#include "Textures.h"
+#include "TextureManager.h"
 
 class Game {
 	public: 
@@ -12,14 +12,14 @@ class Game {
 	private: 
 		SDL_Window* m_window;
 		SDL_Renderer* m_renderer;
-		// Temp, TODO: move to renderer class.
-		SDL_Texture* m_texTarget; // Used to render textures onto.
-		
+
+		SDL_Texture* m_texTarget;
+
+		TextureManager* m_texManager;
+		SDL_Texture* m_texture;
+
 		SDL_Rect m_texRect;
 		SDL_Rect m_srcRect;
-
-		// Temp, TODO: make a texture manager class.
-		Texture* tex;
 
 		struct Resolution {
 			int x = 640;

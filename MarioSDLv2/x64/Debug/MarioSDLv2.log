@@ -1,10 +1,2 @@
-﻿  Game.cpp
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(31,17): warning C4150: deletion of pointer to incomplete type 'SDL_Window'; no destructor called
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\SDL2\include\SDL_video.h(90): message : see declaration of 'SDL_Window'
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(32,19): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\SDL2\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(37,59): warning C4474: 'printf' : too many arguments passed for format string
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(37,59): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(64,62): warning C4474: 'printf' : too many arguments passed for format string
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(64,62): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-  MarioSDLv2.vcxproj -> C:\Users\Jonathan\source\repos\MarioSDLv2\x64\Debug\MarioSDLv2.exe
+﻿  TextureManager.cpp
+  MarioSDLv2.vcxproj -> C:\Users\d016527j\Downloads\mario\x64\Debug\MarioSDLv2.exe
