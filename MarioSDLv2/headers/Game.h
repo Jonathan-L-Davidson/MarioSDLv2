@@ -1,5 +1,10 @@
 #include "SDL.h"
+#include "Global.h"
 #include "TextureManager.h"
+#include "RenderManager.h"
+
+#include "PlayerController.h"
+
 
 class Game {
 	public: 
@@ -11,22 +16,18 @@ class Game {
 
 	private: 
 		SDL_Window* m_window;
-		SDL_Renderer* m_renderer;
 
-		SDL_Texture* m_texTarget;
+		Resolution* m_res;
 
+		RenderManager* m_renderManager;
 		TextureManager* m_texManager;
-		SDL_Texture* m_texture;
+		EntityManager* m_entityManager;
 
-		SDL_Rect m_texRect;
-		SDL_Rect m_srcRect;
+		PlayerController* m_playerController;
 
-		struct Resolution {
-			int x = 640;
-			int y = 480;
-		};
-
-		Resolution m_res;
+		double m_deltaTime;
+		uint64_t m_frameTime;
+		uint64_t m_prevFrameTime;
 
 		void Start();
 		void Update();

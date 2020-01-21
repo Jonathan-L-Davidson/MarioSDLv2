@@ -1,9 +1,10 @@
 #include "Textures.h"
 #include <iostream>
 
-Texture::Texture(std::string cat, std::string id, SDL_Renderer* renderer) {
+Texture::Texture(std::string& id, std::string& cat, SDL_Renderer* renderer) {
 	m_id = new std::string(id);
 	m_category = new std::string(cat);
+
 	LoadTexture(renderer);
 }
 
@@ -13,6 +14,9 @@ Texture::~Texture() {
 }
 
 void Texture::LoadTexture(SDL_Renderer* renderer) {
+
+	if (!m_id->length())	return;
+
 	std::string* path = new std::string("./resources/" + *m_category + "/" + *m_id + ".bmp");
 
 	if (SDL_Surface* surface = SDL_LoadBMP(path->c_str())) {

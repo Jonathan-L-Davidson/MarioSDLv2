@@ -9,16 +9,30 @@ Game::Game() {
 	SDL_Event event;
 
 	while (m_running) {
+		
+		m_prevFrameTime = m_frameTime;
+		m_frameTime = SDL_GetPerformanceCounter();
+
+		m_deltaTime = (double)(m_frameTime - m_prevFrameTime) * 1000 / SDL_GetPerformanceFrequency(); 
+
 		SDL_WaitEvent(&event);
 		if (event.type == SDL_QUIT) {
 			m_running = false;
 			break;
 		}
+
+		if (event.type == SDL_KEYDOWN) {
+			m_playerController->KeyDownCatch(event);
+		}
+
+		if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_r) {
+			m_entityManager->CreateEntity("test", "mob", Vector2D(32, 32));
+		}
 		
 		Update();
 		Draw();
 
-
+		//std::cout << "SDL_GetError: " << SDL_GetError() << std::endl;
 	}
 
 	End();
@@ -26,7 +40,6 @@ Game::Game() {
 
 Game::~Game() {
 	delete m_window;
-	delete m_renderer;
 }
 
 void Game::Start() {
@@ -35,57 +48,36 @@ void Game::Start() {
 		return;
 	}
 
+	m_res = new Resolution;
+
 	// Parameters: Title, X position, Y position, width, height, flags.
-	m_window = SDL_CreateWindow("Mario SDLv2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_res.x, m_res.y, SDL_WINDOW_OPENGL);
+	m_window = SDL_CreateWindow("Mario SDLv2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_res->x, m_res->y, SDL_WINDOW_OPENGL);
 	if(!m_window)	std::cout << "Failed to create window: " << SDL_GetError() << std::endl;
 
-	// Parameters: Window, index, flags.
-	if (!(m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE)))	std::cout << "Failed to create renderer: " << SDL_GetError() << std::endl;
+	m_renderManager = new RenderManager(m_window, m_res);
+	m_texManager = new TextureManager(m_renderManager->GetRenderer());
+	m_entityManager = new EntityManager(m_renderManager->GetRenderer(), m_texManager);
+	m_renderManager->SetEntityManager(m_entityManager);
 
-	m_texManager = new TextureManager(m_renderer);
+	m_playerController = new PlayerController(m_entityManager);
 
-	// Parameters: Renderer, pixel format, flags, width, height
-	m_texTarget = SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_TARGET, m_res.x, m_res.y);
-
-	m_texRect.x = 50;
-	m_texRect.y = 50;
-
-	m_texRect.w = 128;
-	m_texRect.h = 128;
-
-	m_srcRect.x = 32;
-	m_srcRect.y = 0;
-	m_srcRect.w = 64;
-	m_srcRect.h = 64;
-
-	m_texManager->CreateTexture("mobs", "entity");
-	m_texture = m_texManager->GetTexture("entity");
-
-	if (!m_window) { // If window has no value
-		printf("Window failed to be created. Error: ", SDL_GetError());
-		return;
-	}
+	m_frameTime = SDL_GetPerformanceCounter();
 }
 
 void Game::Update() {
+	
+	// Managers
+	m_entityManager->ProcessEntities();
+
+	// Controllers
+	m_playerController->Tick();
+
 	return;
 }
 
 void Game::Draw() {
 
-	SDL_SetRenderTarget(m_renderer, m_texTarget);
-	
-	SDL_RenderClear(m_renderer);
-
-	SDL_RenderCopy(m_renderer, m_texture, &m_srcRect, &m_texRect);
-	
-	SDL_SetRenderTarget(m_renderer, NULL);
-
-	SDL_RenderClear(m_renderer);
-
-	SDL_RenderCopyEx(m_renderer, m_texTarget, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
-
-	SDL_RenderPresent(m_renderer);
+	m_renderManager->ProcessRendering();
 
 	return;
 }

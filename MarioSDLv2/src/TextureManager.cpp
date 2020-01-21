@@ -1,5 +1,6 @@
 #include <TextureManager.h>
 #include <filesystem>
+#include <iostream>
 
 TextureManager::TextureManager(SDL_Renderer* renderer) {
 	m_renderer = renderer;
@@ -13,9 +14,8 @@ TextureManager::~TextureManager() {
 	delete m_textures;
 }
 
-
-void TextureManager::CreateTexture(std::string cat, std::string name) {
-	Texture* tex = new Texture(cat, name, m_renderer);
+void TextureManager::CreateTexture(std::string id, std::string cat) {
+	Texture* tex = new Texture(id, cat, m_renderer);
 	m_textures->push_back(tex);
 }
 
@@ -27,16 +27,23 @@ void TextureManager::RemoveTexture(std::string id) {
 	}
 }
 
-SDL_Texture* TextureManager::GetTexture(std::string id) {
-	int i; // Initialised outside the loop in order to successfuly return the texture.
+Texture* TextureManager::GetTexture(std::string id, std::string cat) {
+	std::string null = "";
+	Texture* result = new Texture(null, null, m_renderer);
 
-	for (i = 0; i < m_textures->size(); i++) {
-		if (id.c_str() == m_textures->at(i)->GetID().c_str()) { // If ID is equal to the texture's ID.
-			break;
+	for (int i = 0; i < m_textures->size(); i++) {
+		if (id == m_textures->at(i)->GetID()) { // If ID is equal to the texture's ID.
+			result = m_textures->at(i);
 		}
 	}
-
-	return m_textures->at(i - 1)->GetTexture(); // int i - 1 as the for loop adds an extra 1 after break;
+	
+	if (result->GetID() == "") {
+		std::cout << "Texture not found, creating new texture...\n";
+		CreateTexture(id, cat);
+		result = GetTexture(id, cat);
+	}
+	
+	return result;
 }
 
 void TextureManager::LoadTextures() {

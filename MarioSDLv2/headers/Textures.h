@@ -4,7 +4,7 @@
 
 class Texture {
 	public:
-		Texture(std::string cat, std::string id, SDL_Renderer* renderer);
+		Texture(std::string& id, std::string& cat, SDL_Renderer* renderer);
 		~Texture();
 
 		std::string GetID() const { return *m_id; };
