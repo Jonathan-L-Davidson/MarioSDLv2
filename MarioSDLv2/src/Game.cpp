@@ -8,31 +8,37 @@ Game::Game() {
 
 	SDL_Event event;
 
+	const Uint8* state = new Uint8;
+
 	while (m_running) {
-		
+		state = SDL_GetKeyboardState(NULL);
+
+
 		m_prevFrameTime = m_frameTime;
 		m_frameTime = SDL_GetPerformanceCounter();
 
-		m_deltaTime = (double)(m_frameTime - m_prevFrameTime) * 1000 / SDL_GetPerformanceFrequency(); 
+		m_deltaTime = (double)(m_frameTime - m_prevFrameTime) * 1000 / SDL_GetPerformanceFrequency();
 
-		SDL_WaitEvent(&event);
-		if (event.type == SDL_QUIT) {
-			m_running = false;
-			break;
-		}
+		while (SDL_PollEvent(&event)) {
 
-		if (event.type == SDL_KEYDOWN) {
-			m_playerController->KeyDownCatch(event);
-		}
+			if (event.type == SDL_QUIT) {
+				m_running = false;
+				break;
+			}
 
-		if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_r) {
-			m_entityManager->CreateEntity("test", "mob", Vector2D(32, 32));
+			if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) {
+				m_playerController->KeyboardEvent(event, state);
+			}
+
+			if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_r) {
+				m_entityManager->CreateEntity("test", "mob", Vector2D(32, 32));
+			}
 		}
 		
 		Update();
 		Draw();
 
-		//std::cout << "SDL_GetError: " << SDL_GetError() << std::endl;
+			//std::cout << "SDL_GetError: " << SDL_GetError() << std::endl;
 	}
 
 	End();
@@ -59,7 +65,7 @@ void Game::Start() {
 	m_entityManager = new EntityManager(m_renderManager->GetRenderer(), m_texManager);
 	m_renderManager->SetEntityManager(m_entityManager);
 
-	m_playerController = new PlayerController(m_entityManager);
+	m_playerController = new PlayerController(m_entityManager, m_deltaTime);
 
 	m_frameTime = SDL_GetPerformanceCounter();
 }

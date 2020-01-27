@@ -28,6 +28,9 @@ void RenderManager::ProcessRendering() {
 
 	SDL_RenderPresent(m_renderer);
 
+	SDL_Delay(1);
+
+
 }
 
 void RenderManager::SetEntityManager(EntityManager* entityManager) { m_entityManager = entityManager; };

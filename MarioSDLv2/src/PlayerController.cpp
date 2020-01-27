@@ -1,13 +1,14 @@
+#include "Global.h"
 #include "PlayerController.h"
+#include <iostream>
 
-
-PlayerController::PlayerController(EntityManager* entityManager) {
+PlayerController::PlayerController(EntityManager* entityManager, double& deltaTime) {
 
 	m_gravity = 2.f;
-	m_speed = 1.3f;
+	m_speed = 0.6f;
 	m_speedCap = 3.f;
 	m_jumpHeight = 5.f;
-	m_slowDown = 1.f;
+	m_slowDown = .99f;
 
 	m_srcRect = new Vector2D(0,0);
 
@@ -19,6 +20,11 @@ PlayerController::PlayerController(EntityManager* entityManager) {
 
 	m_player = m_entityManager->GetEntity(id);
 
+	m_velocity = new VectorF2D(0,0);
+	m_position = new VectorF2D(0, 0);
+
+	m_deltaTime = &deltaTime;
+
 }
 
 PlayerController::~PlayerController() {
@@ -26,28 +32,39 @@ PlayerController::~PlayerController() {
 }
 
 void PlayerController::Tick() {
-
+	Update();
 }
-void PlayerController::KeyDownCatch(SDL_Event& event) {
-	switch (event.key.keysym.sym) {
-	case SDLK_w:		pressState.UP		= true;		break;
-	case SDLK_s:		pressState.DOWN		= true;		break;
-	case SDLK_a:		pressState.LEFT		= true;		break;
-	case SDLK_d:		pressState.RIGHT	= true;		break;
-	case SDLK_SPACE:	pressState.SPACE	= true;		break;
-	case SDLK_LSHIFT:	pressState.SHIFT	= true;		break;
-	case SDLK_ESCAPE:	pressState.ESC		= true;		break;
+void PlayerController::KeyboardEvent(SDL_Event& event, const Uint8* state) {
+
+	if (event.type == SDL_KEYDOWN) {
+		if (state[SDL_SCANCODE_W] || state[SDL_SCANCODE_UP]) {
+			m_velocity->y -= m_speed * (*m_deltaTime);
+		}
+
+		if (state[SDL_SCANCODE_S] || state[SDL_SCANCODE_DOWN]) {
+			m_velocity->y += m_speed * (*m_deltaTime);
+		}
+
+		if (state[SDL_SCANCODE_A] || state[SDL_SCANCODE_LEFT]) {
+			m_velocity->x -= m_speed * (*m_deltaTime);
+		}
+
+		if (state[SDL_SCANCODE_D] || state[SDL_SCANCODE_RIGHT]) {
+			m_velocity->x += m_speed * (*m_deltaTime);
+		}
 	}
 }
 
-void PlayerController::KeyUpCatch(SDL_Event& event) {
-	switch (event.key.keysym.sym) {
-	case SDLK_w:		pressState.UP		= false;	break;
-	case SDLK_s:		pressState.DOWN		= false;	break;
-	case SDLK_a:		pressState.LEFT		= false;	break;
-	case SDLK_d:		pressState.RIGHT	= false;	break;
-	case SDLK_SPACE:	pressState.SPACE	= false;	break;
-	case SDLK_LSHIFT:	pressState.SHIFT	= false;	break;
-	case SDLK_ESCAPE:	pressState.ESC		= false;	break;
-	}
+void PlayerController::Update() {
+	m_position->x += m_velocity->x * (*m_deltaTime);
+	m_position->y += m_velocity->y * (*m_deltaTime);
+
+	m_player->MoveBody(*m_position);
+
+	m_velocity->x = m_velocity->x * m_slowDown;
+	m_velocity->y = m_velocity->y * m_slowDown;
+
+	//std::cout << "deltaTime: " << *m_deltaTime << std::endl;
+	
 }
+

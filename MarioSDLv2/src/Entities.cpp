@@ -38,7 +38,7 @@ void Entity::Update() {
 	Process();
 }
 
-void Entity::MoveBody(Vector2D& vector) {
+void Entity::MoveBody(VectorF2D& vector) {
 	if(vector.x)	m_body->x = vector.x;
 	if(vector.y)	m_body->y = vector.y;
 }

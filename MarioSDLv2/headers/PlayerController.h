@@ -4,12 +4,11 @@
 
 class PlayerController {
 	public:
-		PlayerController(EntityManager* entityManager);
+		PlayerController(EntityManager* entityManager, double& deltaTime);
 		~PlayerController();
 
 		void Tick();
-		void KeyDownCatch(SDL_Event& event);
-		void KeyUpCatch(SDL_Event& event);
+		void KeyboardEvent(SDL_Event& event, const Uint8* state);
 
 	private:
 		float m_gravity;
@@ -38,8 +37,8 @@ class PlayerController {
 		
 		EntityManager* m_entityManager;
 
-		Vector2D* m_velocity;
-		Vector2D* m_position;
+		VectorF2D* m_velocity;
+		VectorF2D* m_position;
 
 		void Update();
 
