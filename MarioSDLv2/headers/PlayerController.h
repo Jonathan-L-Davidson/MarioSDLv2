@@ -17,7 +17,7 @@ class PlayerController {
 		float m_jumpHeight;
 		float m_slowDown;
 
-		double* m_deltaTime;
+		double m_deltaTime;
 
 		bool m_isGrounded();
 
@@ -41,5 +41,8 @@ class PlayerController {
 		VectorF2D* m_position;
 
 		void Update();
+
+		void Jump();
+		void Crouch();
 
 };

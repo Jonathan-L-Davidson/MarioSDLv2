@@ -1,2 +1,9 @@
+<<<<<<< Updated upstream
 ﻿  RenderManager.cpp
   MarioSDLv2.vcxproj -> C:\Users\d016527j\Documents\MarioSDL\x64\Debug\MarioSDLv2.exe
+=======
+﻿  PlayerController.cpp
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(58,47): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(59,48): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  MarioSDLv2.vcxproj -> C:\Users\Jonathan\source\repos\MarioSDLv2\x64\Debug\MarioSDLv2.exe
+>>>>>>> Stashed changes

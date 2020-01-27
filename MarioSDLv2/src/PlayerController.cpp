@@ -10,7 +10,10 @@ PlayerController::PlayerController(EntityManager* entityManager, double& deltaTi
 	m_jumpHeight = 5.f;
 	m_slowDown = .99f;
 
+	m_velocity = new Vector2D(0, 0);
 	m_srcRect = new Vector2D(0,0);
+
+	m_deltaTime = deltaTime;
 
 	m_stat = Stat::LIVING;
 
