@@ -1,8 +1,9 @@
-﻿  PlayerController.cpp
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(69,67): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(70,69): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(71,69): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(72,69): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(76,49): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(77,49): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  MarioSDLv2.vcxproj -> C:\Users\Jonathan\source\repos\MarioSDLv2\x64\Debug\MarioSDLv2.exe
+﻿  Main.cpp
+  PlayerController.cpp
+C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(74): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(75): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(76): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(77): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(86): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  MarioSDLv2.vcxproj -> C:\Users\d016527j\Documents\MarioSDLv2\x64\Debug\MarioSDLv2.exe

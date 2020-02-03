@@ -19,6 +19,7 @@ class PlayerController {
 
 		double* m_deltaTime;
 
+		bool m_grounded;
 		bool m_isGrounded();
 
 		Vector2D* m_srcRect;
