@@ -17,7 +17,7 @@ class PlayerController {
 		float m_jumpHeight;
 		float m_slowDown;
 
-		double m_deltaTime;
+		double* m_deltaTime;
 
 		bool m_isGrounded();
 
