@@ -92,7 +92,9 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>.\SDL2\include;.\headers;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <CompileAsManaged>/std:c++17</CompileAsManaged>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <SupportJustMyCode>false</SupportJustMyCode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

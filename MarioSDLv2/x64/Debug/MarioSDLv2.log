@@ -1,9 +1,5 @@
-﻿  Main.cpp
-  PlayerController.cpp
-C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(74): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(75): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(76): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(77): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\d016527j\Documents\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(86): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  MarioSDLv2.vcxproj -> C:\Users\d016527j\Documents\MarioSDLv2\x64\Debug\MarioSDLv2.exe
+﻿  PlayerController.cpp
+C:\Users\d016527j\Documents\mariosdl\MarioSDLv2\src\PlayerController.cpp(81): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\d016527j\Documents\mariosdl\MarioSDLv2\src\PlayerController.cpp(90): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\d016527j\Documents\mariosdl\MarioSDLv2\src\PlayerController.cpp(99): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  MarioSDLv2.vcxproj -> C:\Users\d016527j\Documents\mariosdl\x64\Debug\MarioSDLv2.exe

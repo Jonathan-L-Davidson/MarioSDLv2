@@ -31,6 +31,6 @@ void RenderManager::ProcessRendering() {
 	SDL_Delay(1);
 
 
-}
+ }
 
 void RenderManager::SetEntityManager(EntityManager* entityManager) { m_entityManager = entityManager; };

@@ -23,7 +23,7 @@ Entity::Entity(std::string name, std::string type, Vector2D size, int id) {
 	m_size = new Vector2D(size.x, size.y);
 
 	m_body = new SDL_Rect;
-	m_body->x = 0;	m_body->y = 0;	m_body->w = m_size->x * sizeOffset;	m_body->h = m_size->y * sizeOffset;
+	m_body->x = 0;	m_body->y = 0;	m_body->w = m_size->x;	m_body->h = m_size->y;
 
 	m_srcRect = new SDL_Rect;
 	m_srcRect->x = 0;	m_srcRect->y = 0;	m_srcRect->w = m_size->x;	m_srcRect->h = m_size->y;

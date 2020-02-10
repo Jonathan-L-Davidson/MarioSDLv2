@@ -38,7 +38,10 @@ Game::Game() {
 		Update();
 		Draw();
 
-			//std::cout << "SDL_GetError: " << SDL_GetError() << std::endl;
+		if (strlen(SDL_GetError())) {
+			std::printf("Error Found: ", SDL_GetError(), "\n");
+			SDL_ClearError();
+		}
 	}
 
 	End();

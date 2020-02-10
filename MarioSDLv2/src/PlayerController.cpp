@@ -1,14 +1,15 @@
 #include "Global.h"
 #include "PlayerController.h"
+#include <cmath> 
 #include <iostream>
 
 PlayerController::PlayerController(EntityManager* entityManager, double& deltaTime) {
 
 	m_gravity = 0.005f;
-	m_speed = 0.04f;
-	m_speedCap = 0.4f;
+	m_speed = 0.002f;
+	m_speedCap = .5f;
 	m_jumpHeight = 5.f;
-	m_slowDown = .98f;
+	m_slowDown = 1.03f;
 
 	m_srcRect = new Vector2D(0,0);
 
@@ -25,7 +26,7 @@ PlayerController::PlayerController(EntityManager* entityManager, double& deltaTi
 
 	m_deltaTime = &deltaTime;
 
-	m_grounded = false;
+	m_grounded = true;
 
 }
 
@@ -68,18 +69,30 @@ void PlayerController::KeyboardEvent(SDL_Event& event, const Uint8* state) {
 }
 
 void PlayerController::Update() {
+	m_moving = false;
 
 	//m_grounded = m_isGrounded();
 
-	if (pressState.UP)		m_velocity->y -= m_speed * (*m_deltaTime) / 10;
-	if (pressState.DOWN)	m_velocity->y += m_speed * (*m_deltaTime) / 10;
-	if (pressState.LEFT)	m_velocity->x -= m_speed * (*m_deltaTime) / 10;
-	if (pressState.RIGHT)	m_velocity->x += m_speed * (*m_deltaTime) / 10;
+//	if (pressState.UP)		m_velocity->y -= m_speed * (*m_deltaTime) / 10;
+//	if (pressState.DOWN)	m_velocity->y += m_speed * (*m_deltaTime) / 10;
+	
+	if (pressState.LEFT) {
+		m_moving = true;
+		m_velocity->x -= (m_speed * (*m_deltaTime));
+	} else {
+		if (m_velocity->x < 0) {
+			m_velocity->x = m_velocity->x / m_slowDown;
+		}
+	}
 
-
-
-	m_velocity->x = m_velocity->x * m_slowDown;
-	m_velocity->y = m_velocity->y * m_slowDown;
+	if (pressState.RIGHT) {
+		m_moving = true;
+		m_velocity->x += m_speed * (*m_deltaTime);
+	} else {
+		if (m_velocity->x > 0) {
+			m_velocity->x = m_velocity->x / m_slowDown;
+		}
+	}
 
 
 	if (!m_grounded) {
@@ -90,6 +103,7 @@ void PlayerController::Update() {
 		std::cout << "X Capped!" << std::endl;
 		m_velocity->x = m_speedCap;
 	}
+
 	if (m_velocity->x < -m_speedCap) {
 		std::cout << "-X Capped!" << std::endl;
 		m_velocity->x = -m_speedCap;
@@ -99,6 +113,7 @@ void PlayerController::Update() {
 		std::cout << "Y Capped!" << std::endl;
 		m_velocity->y = m_speedCap;
 	}
+
 	if (m_velocity->y < -m_speedCap) {
 		std::cout << "-Y Capped!" << std::endl;
 		m_velocity->y = -m_speedCap;
@@ -108,5 +123,7 @@ void PlayerController::Update() {
 	m_position->y += m_velocity->y;
 
 	m_player->MoveBody(*m_position);
+
+
 }
 
