@@ -1,5 +1,22 @@
-﻿  PlayerController.cpp
-C:\Users\d016527j\Documents\mariosdl\MarioSDLv2\src\PlayerController.cpp(81): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-C:\Users\d016527j\Documents\mariosdl\MarioSDLv2\src\PlayerController.cpp(90): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\d016527j\Documents\mariosdl\MarioSDLv2\src\PlayerController.cpp(99): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  MarioSDLv2.vcxproj -> C:\Users\d016527j\Documents\mariosdl\x64\Debug\MarioSDLv2.exe
+﻿  Entities.cpp
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Entities.cpp(42,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Entities.cpp(43,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  EntityManager.cpp
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\EntityManager.cpp(22,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Game.cpp
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(42,45): warning C4474: 'printf' : too many arguments passed for format string
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(42,45): message : placeholders and their parameters expect 0 variadic arguments, but 2 were provided
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(51,17): warning C4150: deletion of pointer to incomplete type 'SDL_Window'; no destructor called
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\SDL2\include\SDL_video.h(90): message : see declaration of 'SDL_Window'
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(56,59): warning C4474: 'printf' : too many arguments passed for format string
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Game.cpp(56,59): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+  LevelManager.cpp
+  Main.cpp
+  PlayerController.cpp
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(81,46): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(90,44): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\PlayerController.cpp(99,46): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  RenderManager.cpp
+  Generating Code...
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\EntityManager.cpp(47): warning C4715: 'EntityManager::GetEntity': not all control paths return a value
+  MarioSDLv2.vcxproj -> C:\Users\Jonathan\source\repos\MarioSDLv2\x64\Debug\MarioSDLv2.exe

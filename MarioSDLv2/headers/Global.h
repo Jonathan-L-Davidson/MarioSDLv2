@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#define levelDir "./resources/levels/"
 #define sizeOffset 2.f
 
 struct Resolution {

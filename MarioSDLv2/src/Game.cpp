@@ -67,6 +67,7 @@ void Game::Start() {
 	m_texManager = new TextureManager(m_renderManager->GetRenderer());
 	m_entityManager = new EntityManager(m_renderManager->GetRenderer(), m_texManager);
 	m_renderManager->SetEntityManager(m_entityManager);
+	m_levelManager = new LevelManager();
 
 	m_playerController = new PlayerController(m_entityManager, m_deltaTime);
 

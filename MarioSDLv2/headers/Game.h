@@ -2,6 +2,7 @@
 #include "Global.h"
 #include "TextureManager.h"
 #include "RenderManager.h"
+#include "LevelManager.h"
 
 #include "PlayerController.h"
 
@@ -22,6 +23,7 @@ class Game {
 		RenderManager* m_renderManager;
 		TextureManager* m_texManager;
 		EntityManager* m_entityManager;
+		LevelManager* m_levelManager;
 
 		PlayerController* m_playerController;
 
