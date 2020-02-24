@@ -15,14 +15,13 @@ enum class TileType {
 
 class Tile {
 	private:
-		std::vector<std::vector<Tile*>*>* m_tiles;
 		TileType* m_type;
 		Entity* m_tileEntity;
 
 		Vector2D m_tilePos;
 
 	public:
-		Tile(TileType type, Vector2D pos);
+		Tile(char type, Vector2D pos);
 		~Tile();
 
 		SDL_Rect GetTileRect() const { return m_tileEntity->GetBody(); };

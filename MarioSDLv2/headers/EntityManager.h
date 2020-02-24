@@ -11,7 +11,7 @@ class EntityManager {
 
 		void ProcessEntities();
 
-		int CreateEntity(std::string name, std::string type, Vector2D size);
+		int CreateEntity(std::string name, std::string type, Vector2D size, Vector2D pos = Vector2D(0, 0));
 		void RemoveEntity(int id);
 
 		Entity* GetEntity(int id);

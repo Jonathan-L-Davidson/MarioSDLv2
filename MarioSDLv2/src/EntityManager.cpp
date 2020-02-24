@@ -18,12 +18,12 @@ void EntityManager::ProcessEntities() {
 	}
 }
 
-int EntityManager::CreateEntity(std::string name, std::string type, Vector2D size) {
+int EntityManager::CreateEntity(std::string name, std::string type, Vector2D size, Vector2D pos) {
 	int id = m_entities->size() + 1;
 	Entity* ent = new Entity(name, type, size, id);
 	
 	ent->SetTexture(m_texManager->GetTexture(name, "entity"));
-
+	ent->MoveBody(pos);
 	m_entities->push_back(ent);
 	std::cout << "m_entities.size() = " << m_entities->size() << std::endl;
 

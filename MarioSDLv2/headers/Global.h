@@ -13,6 +13,7 @@ class Vector2D {
 		int x;
 		int y;
 		Vector2D(int X, int Y) { x = X; y = Y; };
+		Vector2D() { x = 0; y = 0; };
 };
 
 class VectorF2D {
@@ -20,5 +21,6 @@ class VectorF2D {
 		float x;
 		float y;
 		VectorF2D(float X, float Y) { x = X; y = Y; };
+		VectorF2D() { x = 0; y = 0; };
 };
 

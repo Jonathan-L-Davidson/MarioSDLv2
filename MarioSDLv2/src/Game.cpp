@@ -39,7 +39,7 @@ Game::Game() {
 		Draw();
 
 		if (strlen(SDL_GetError())) {
-			std::printf("Error Found: ", SDL_GetError(), "\n");
+			std::cout << "Error Found: " << SDL_GetError() << std::endl;
 			SDL_ClearError();
 		}
 	}
@@ -53,7 +53,7 @@ Game::~Game() {
 
 void Game::Start() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		printf("SDL failed to initialise. Error: ", SDL_GetError());
+		std::cout << "SDL failed to initialise. Error: " << SDL_GetError() << std::endl;
 		return;
 	}
 
@@ -67,11 +67,13 @@ void Game::Start() {
 	m_texManager = new TextureManager(m_renderManager->GetRenderer());
 	m_entityManager = new EntityManager(m_renderManager->GetRenderer(), m_texManager);
 	m_renderManager->SetEntityManager(m_entityManager);
-	m_levelManager = new LevelManager();
+	m_levelManager = new LevelManager(m_entityManager);
 
 	m_playerController = new PlayerController(m_entityManager, m_deltaTime);
 
 	m_frameTime = SDL_GetPerformanceCounter();
+
+	m_levelManager->LoadLevel("MainLevel");
 }
 
 void Game::Update() {

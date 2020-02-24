@@ -18,6 +18,7 @@ class Entity {
 			   		
 		SDL_Rect GetBody() const { return *(m_body); };
 		void MoveBody(VectorF2D& vector);
+		void MoveBody(Vector2D& vector);
 
 		SDL_Rect GetSrcRect() const { return *(m_srcRect); };
 		void SetTexture(Texture* texture);

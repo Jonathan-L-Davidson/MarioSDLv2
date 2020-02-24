@@ -43,6 +43,11 @@ void Entity::MoveBody(VectorF2D& vector) {
 	if(vector.y)	m_body->y = vector.y;
 }
 
+void Entity::MoveBody(Vector2D& vector) {
+	if(vector.x)	m_body->x = vector.x;
+	if(vector.y)	m_body->y = vector.y;
+}
+
 void Entity::SetTexture(Texture* texture) {
 	m_texture = texture;
 }
