@@ -3,7 +3,12 @@
 #include "Entities.h"
 #include "TextureManager.h"
 #include <vector>
-class EntityManager {
+class EntityManager {		
+	private:
+		std::vector<Entity*>* m_entities;
+
+		TextureManager* m_texManager;
+		SDL_Renderer* m_renderer;
 
 	public:
 		EntityManager(SDL_Renderer* renderer, TextureManager* texManager);
@@ -17,10 +22,7 @@ class EntityManager {
 		Entity* GetEntity(int id);
 
 		void RenderEntities();
-		
-	private:
-		std::vector<Entity*>* m_entities;
 
-		TextureManager* m_texManager;
-		SDL_Renderer* m_renderer;
+		TextureManager* GetTextureManager() const {	return m_texManager; };
+
 };

@@ -5,27 +5,30 @@
 
 class LevelManager {
 	private:
-
+		SDL_Renderer* m_renderer;
 		EntityManager* m_entityManager;
+		TextureManager* m_textureManager;
+
+		Texture* m_levelTexture;
 
 		Vector2D* m_levelSize;
 		
 
 		int m_maxLevels = 40; // 40 levels at most, it's not required, used for hashing		
-		int m_gridSize = 4;
+		int m_gridSize = 3;
 		Vector2D m_tileSize = Vector2D(32,32);
 
 		std::vector<std::string> m_levelList;
 
 
-		struct grid {
+		struct Grid {
 			SDL_Rect m_bounding;
-			std::vector<std::vector<Tile*>*>* m_tiles;
+			std::vector<std::vector<Tile*>> m_tiles;
 
 			bool m_isActive = false;
 		};
 
-		std::vector<grid*> m_grid;
+		std::vector<Grid*> m_grid;
 		
 		int m_level;
 
@@ -38,7 +41,7 @@ class LevelManager {
 		bool const SanityCheckLevelFile(std::vector<std::string>& file);
 
 	public:
-		LevelManager(EntityManager* entityManager);
+		LevelManager(SDL_Renderer* renderer, EntityManager* entityManager);
 		~LevelManager();
 
 		void LoadLevel(std::string input);
@@ -47,4 +50,5 @@ class LevelManager {
 		Tile* GetTile(Vector2D pos);
 
 		void Update();
+		void RenderTiles();
 };

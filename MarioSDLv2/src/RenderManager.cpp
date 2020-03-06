@@ -19,6 +19,7 @@ void RenderManager::ProcessRendering() {
 	SDL_RenderClear(m_renderer);
 
 	m_entityManager->RenderEntities();
+	m_levelManager->RenderTiles();
 
 	SDL_SetRenderTarget(m_renderer, NULL); // Stop targetting the texture.
 
@@ -34,3 +35,4 @@ void RenderManager::ProcessRendering() {
  }
 
 void RenderManager::SetEntityManager(EntityManager* entityManager) { m_entityManager = entityManager; };
+void RenderManager::SetLevelManager(LevelManager* levelManager) { m_levelManager = levelManager; };
