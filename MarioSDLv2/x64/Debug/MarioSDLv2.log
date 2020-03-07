@@ -1,9 +1,11 @@
-﻿  LevelManager.cpp
+﻿  Tiles.cpp
 C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\headers\Tiles.h(41,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\headers\Tiles.h(41,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\LevelManager.cpp(42,45): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\LevelManager.cpp(43,37): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\LevelManager.cpp(71,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\LevelManager.cpp(71,102): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\LevelManager.cpp(127): warning C4715: 'LevelManager::SanityCheckLevelFile': not all control paths return a value
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Tiles.cpp(11,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Tiles.cpp(12,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Tiles.cpp(13,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Tiles.cpp(13,53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Tiles.cpp(51,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Tiles.cpp(51,49): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Jonathan\source\repos\MarioSDLv2\MarioSDLv2\src\Tiles.cpp(34): warning C4715: 'Tile::CharToType': not all control paths return a value
   MarioSDLv2.vcxproj -> C:\Users\Jonathan\source\repos\MarioSDLv2\x64\Debug\MarioSDLv2.exe

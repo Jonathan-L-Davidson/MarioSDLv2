@@ -33,7 +33,7 @@ class Tile {
 		int m_frame = 0;
 
 	public:
-		Tile(char type, VectorF2D pos);
+		Tile(const char& type, VectorF2D pos);
 		~Tile();
 
 		void ChangeType(const TileType type);

@@ -3,17 +3,14 @@
 #include "EntityManager.h"
 #include <iostream>
 
-Tile::Tile(char type, VectorF2D pos) {
-	std::cout << "Tile | Type: " << m_type << "Pos:" << pos.x << " " << pos.y << std::endl;
-
+Tile::Tile(const char& type, VectorF2D pos) {
 	m_transRect = new SDL_Rect();
 
 	// Strangely, SDL_Rect does not want to construct properly with x,y,w,h parameters.
 	// I have to do this manually here.
-	m_transRect->x = pos.x;
-	m_transRect->y = pos.y;
-	m_transRect->w = m_size->x;
-	m_transRect->h = m_size->y;
+	m_transRect->x = pos.x * m_size->x;
+	m_transRect->y = pos.y * m_size->y;
+	m_transRect->w = m_size->x; m_transRect->h = m_size->y;
 
 	ChangeType(*CharToType(type));
 }
@@ -41,13 +38,17 @@ void Tile::ChangeType(const TileType type) {
 	m_type = new TileType(type);
 
 	GenerateTexture(m_type);
-
 }
 
 void Tile::GenerateTexture(const TileType* type) {
 	m_srcRect = new SDL_Rect();
 	
-	m_srcRect->y = (int)type * m_transRect->h;
+	int typeNum = (int)*type;
+
+	if (typeNum) typeNum -= 1;
+
+	m_srcRect->y = typeNum * m_transRect->h;
+	m_srcRect->w = m_size->x; m_srcRect->h = m_size->y;
 
 	switch (*type) {
 			case TileType::QUESTIONBLOCK:

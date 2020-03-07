@@ -3,6 +3,8 @@
 #define levelDir "./resources/levels/"
 #define sizeOffset 2.f
 
+const bool DEBUG = true;
+
 struct Resolution {
 	int x = 640;
 	int y = 480;

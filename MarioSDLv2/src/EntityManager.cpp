@@ -25,8 +25,7 @@ int EntityManager::CreateEntity(std::string name, std::string type, Vector2D siz
 	ent->SetTexture(m_texManager->GetTexture(name, "entity"));
 	ent->MoveBody(pos);
 	m_entities->push_back(ent);
-	std::cout << "m_entities.size() = " << m_entities->size() << std::endl;
-
+	
 	return id;
 }
 

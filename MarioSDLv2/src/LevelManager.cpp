@@ -49,27 +49,14 @@ void LevelManager::LoadLevel(std::string input) {
     if (m_levelSize->x % m_gridSize) gridAmount += 1;
     
     m_grid.resize(gridAmount);
-
-    std::cout << "gridAmount: " << gridAmount << std::endl;
-    std::cout << "m_levelSize->x: " << m_levelSize->x << std::endl;
-    std::cout << "m_gridSize: " << m_gridSize << std::endl;
-
     
     for (int i = 0; i < gridAmount; i++) {
-        // for every grid
+        m_grid.at(i) = new Grid;    
+        m_grid.at(i)->m_tiles.resize(m_levelSize->y);
 
-        std::cout << "i: " << i;
-
-        for (int j = 0; j < m_gridSize; j++) {
-            // On the first y value.
-            std::cout << " j: " << j;
-
+        for (int j = 0; j < m_levelSize->y; j++) {
             for (int k = 0; k < m_levelSize->x; k++) {
-                // this is the x value.
-
-                std::cout << " k: " << k << std::endl;
-                //m_grid.at(i)->m_tiles.at(k).push_back(new Tile((char)fileData.at(k).at(j), VectorF2D(k, j)));
-                //m_grid.at(i)->m_tiles->at(k)->at(j) = tile;
+                m_grid.at(i)->m_tiles.at(j).push_back(new Tile(fileData.at(j).at(k), VectorF2D(k, j)));
             }
         }
     }
@@ -111,7 +98,6 @@ void LevelManager::GenerateLevelList() {
                 hash += int(i.at(x));
 
             }
-            std::cout << "Level found: " << levelDir+i << std::endl;
             m_levelList.at(hash % m_maxLevels) = i;
         }
     }    
@@ -133,13 +119,12 @@ void LevelManager::Update() {
 
 
 void LevelManager::RenderTiles() {
-    /*
     for (int i = 0; i < m_grid.size(); i++) {
-        for (int j = 0; j < m_gridSize; j++) {
+        for (int j = 0; j < m_levelSize->y; j++) {
             for (int k = 0; k < m_levelSize->x; k++) {
-                Tile* tile = m_grid.at(i).m_tiles->at(k)->at(j);
+                Tile* tile = m_grid.at(i)->m_tiles.at(j).at(k);
                 SDL_RenderCopy(m_renderer, m_levelTexture->GetTexture(), tile->GetSrcRect(), tile->GetTransRect());
             }
         }
-    }*/
+    }
 }

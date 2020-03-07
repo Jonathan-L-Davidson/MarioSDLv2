@@ -1,5 +1,6 @@
 #include "Textures.h"
 #include <iostream>
+#include <SDL_image.h>
 
 Texture::Texture(std::string& id, std::string& cat, SDL_Renderer* renderer) {
 	m_id = new std::string(id);
@@ -17,9 +18,9 @@ void Texture::LoadTexture(SDL_Renderer* renderer) {
 
 	if (!m_id->length())	return;
 
-	std::string* path = new std::string("./resources/" + *m_category + "/" + *m_id + ".bmp");
+	std::string* path = new std::string("./resources/" + *m_category + "/" + *m_id + ".png");
 
-	if (SDL_Surface* surface = SDL_LoadBMP(path->c_str())) {
+	if (SDL_Surface* surface = IMG_Load(path->c_str())) {
 		m_texture = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_FreeSurface(surface); // "deletes" the surface. We need hardware accelerated rendering and not software based.
 	}
